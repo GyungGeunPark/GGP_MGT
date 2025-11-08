@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__sequential-thinking__sequentialthinking",
+      "Bash(ls:*)",
+      "Bash(python:*)",
+      "Bash(smart1Scriptsactivate.bat)",
+      "Bash(pip install:*)",
+      "Bash(cmd /c:*)",
+      "Bash(.\\smart1\\Scripts\\python.exe -m pip install:*)",
+      "Bash(\"c:\\Users\\user\\Desktop\\triad_openvr_new(0919)\\triad_openvr_new\\smart1\\Scripts\\python.exe\" -m pip install --upgrade pip)",
+      "Bash(\"c:\\Users\\user\\Desktop\\triad_openvr_new(0919)\\triad_openvr_new\\smart1\\Scripts\\pip.exe\" install -r requirements.txt)",
+      "Bash(\"c:\\Users\\user\\Desktop\\triad_openvr_new(0919)\\triad_openvr_new\\smart1\\Scripts\\python.exe\" -m pip install -r requirements.txt)",
+      "Bash(\"c:\\Users\\user\\Desktop\\triad_openvr_new(0919)\\triad_openvr_new\\smart1\\Scripts\\python.exe\" \"c:\\Users\\user\\Desktop\\triad_openvr_new(0919)\\triad_openvr_new\\triad_openvr\\triad_openvr_tcp.py\" --test)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
