@@ -1,0 +1,3 @@
+"""
+Rainbow Robotics control module
+"""
