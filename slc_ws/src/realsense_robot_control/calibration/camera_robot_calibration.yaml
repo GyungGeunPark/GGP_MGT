@@ -1,0 +1,31 @@
+# Camera to Robot Base Calibration File
+# This file contains the transformation matrix from camera frame to robot base frame
+# The matrix is in row-major order (4x4 homogeneous transformation)
+
+# Default calibration (camera 0.5m in front, 0.3m above robot base)
+# This should be replaced with actual calibration values from hand-eye calibration
+camera_to_robot_transform:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.5    # X translation (m)
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0    # Y translation (m)
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.3    # Z translation (m)
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+
+# Calibration metadata
+calibration_info:
+  date: "2025-06-11"
+  method: "default"
+  camera_model: "Intel RealSense D455"
+  robot_model: "Rainbow Robotics RB10-1300"
+  notes: "Default calibration - requires actual hand-eye calibration for accurate operation"
