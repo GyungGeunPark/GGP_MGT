@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JRT U81 LDS 제어 패널</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- 헤더 -->
+    <header>
+      <h1>
+        <span class="icon">⬡</span>
+        JRT U81 LDS 제어 패널
+      </h1>
+      <div class="status-bar">
+        <span class="dot" id="connDot"></span>
+        <span id="connText">연결 중...</span>
+        <span class="port-badge" id="portBadge"></span>
+        <span class="volt-badge" id="voltBadge" style="display:none"
+              title="공급 전압 (클릭하여 갱신)" onclick="sendCmd('read_voltage')"></span>
+      </div>
+    </header>
+
+    <!-- 거리 표시 카드 -->
+    <section class="card distance-card">
+      <div class="distance-main" id="distanceMain">-- mm</div>
+      <span class="low-conf-badge" id="lowConfBadge" style="display:none">※ 저신뢰도</span>
+      <div class="distance-sub"  id="distanceSub">-- m</div>
+      <div class="sq-row">
+        <span class="sq-label">신호품질</span>
+        <span class="sq-bar-wrap">
+          <span class="sq-bar" id="sqBar"></span>
+        </span>
+        <span class="sq-value" id="sqValue">--</span>
+        <span class="sq-grade" id="sqGrade"></span>
+      </div>
+      <div class="sensor-state-row">
+        <span class="state-pill" id="statePower">레이저 OFF</span>
+        <span class="state-pill" id="stateCont">연속 OFF</span>
+      </div>
+    </section>
+
+    <!-- 전원 제어 -->
+    <section class="card control-card">
+      <h2 class="section-title">전원 제어</h2>
+      <div class="btn-row">
+        <button class="btn btn-green" id="btnOn"  onclick="sendCmd('power_on')">
+          <span class="btn-icon">◉</span> 레이저 ON
+        </button>
+        <button class="btn btn-red"   id="btnOff" onclick="sendCmd('power_off')">
+          <span class="btn-icon">○</span> 레이저 OFF
+        </button>
+      </div>
+    </section>
+
+    <!-- 측정 제어 -->
+    <section class="card control-card">
+      <h2 class="section-title">측정 제어</h2>
+      <div class="btn-row">
+        <button class="btn btn-blue" id="btnOnce" onclick="sendCmd('measure_once')">
+          <span class="btn-icon">⚡</span> 순간 측정
+        </button>
+        <button class="btn btn-purple" id="btnCont" onclick="toggleContinuous()">
+          <span class="btn-icon" id="contIcon">▶</span>
+          <span id="contLabel">연속 시작</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 측정 모드 선택 -->
+    <section class="card control-card">
+      <h2 class="section-title">측정 모드</h2>
+      <div class="btn-row">
+        <button class="btn btn-mode" id="btnModeSlow" onclick="setMode('slow')">
+          <span class="btn-icon">◑</span> Slow
+        </button>
+        <button class="btn btn-mode" id="btnModeAuto" onclick="setMode('auto')">
+          <span class="btn-icon">◎</span> Auto
+        </button>
+        <button class="btn btn-mode" id="btnModeFast" onclick="setMode('fast')">
+          <span class="btn-icon">▸▸</span> Fast
+        </button>
+      </div>
+      <div class="mode-desc" id="modeDesc">원거리·저반사 환경 최적화 (타임아웃 8초/회)</div>
+    </section>
+
+    <!-- 측정 이력 -->
+    <section class="card log-card">
+      <div class="log-header">
+        <h2 class="section-title">측정 이력</h2>
+        <div class="log-meta">
+          <span id="logCount">0 건</span>
+          <button class="btn-text" onclick="clearLog()">지우기</button>
+        </div>
+      </div>
+      <div class="log-list" id="logList">
+        <div class="log-empty">아직 측정 기록이 없습니다.</div>
+      </div>
+    </section>
+
+  </div><!-- /.container -->
+
+  <!-- 토스트 알림 -->
+  <div class="toast" id="toast"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
