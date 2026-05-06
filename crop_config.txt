@@ -1,7 +1,0 @@
-# Crop Configuration (Robot World Coordinates, meter)
-x_min = 0.300000
-x_max = 1.000000
-y_min = -1.150000
-y_max = 0.450000
-z_min = 0.350000
-z_max = 1.000000
