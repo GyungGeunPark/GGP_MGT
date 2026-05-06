@@ -1,9 +1,4 @@
-# `mainwindow.py` 코드 상세 분석 문서
-
-> **파일 경로**: `sensor_cam_main/sensor_cam_main/mainwindow.py`
-> **총 라인 수**: 2,468 줄
-> **역할**: ROS2 기반 다중 카메라/LiDAR 통합 관리 시스템 (Flask 웹 인터페이스)
-> **작성자**: jyp7781@ff00ff.kr (Magenta Robotics)
+# `sensor_cam_main` 코드 상세 분석
 
 ---
 
@@ -1701,5 +1696,3 @@ K = | 636.339   0.000   654.342 |
 3. **하드코딩된 IP** — 외부에 노출 시 위험 → 환경변수화
 
 ---
-
-> ⚙️ **전체 패키지 분석 완료** — 이 문서는 `sensor_cam_main` ROS2 패키지의 모든 소스/빌드/캘리브레이션 파일을 정적 분석한 결과입니다. 운영 모드(`mainwindow.py`)와 분석 모드(`detection.py`)는 모델 파일(`*.pth`)과 캘리브레이션 데이터(`.npz`/`.yaml`)를 매개로 통합되어 있으며, ROS2 ament 빌드 시스템으로 함께 배포됩니다.
