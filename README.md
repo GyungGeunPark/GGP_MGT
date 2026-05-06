@@ -1,9 +1,5 @@
 # nimg_v3 — FoundationPose 기반 6DoF 자세 추정 시스템
 
-> **버전**: 3.0.0 / v5 통합 파이프라인 (2026-04-20)
-> **작성자**: FurSys AI Team
-> **목적**: Fursys 산업용 도장(painting) 품질 검사를 위한 실시간 6DoF 자세 추정 + 상대 yaw 신호(-2~+2) 분류 + ROS2 퍼블리시
-
 ---
 
 ## 목차
@@ -897,5 +893,3 @@ Roboflow 프로젝트 `sl-cjsxb/project-wdpim`. 단일 클래스 세그멘테이
 | `models/neural_fields/template_db.npz` | N=84 (42뷰 × 2클래스), D=1024 (DINOv2-L) |
 
 ---
-
-**문서 끝.** v5 통합 파이프라인 (2026-04-20) 기준. 다음 변경 시 [test_result/260420/REPORT.md](../../test_result/260420/REPORT.md) 와 [CLAUDE.md](../../CLAUDE.md) 도 함께 업데이트.
