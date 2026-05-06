@@ -1,8 +1,4 @@
-# nimg_v3 코드 종합 분석 문서
-
-> **작성일**: 2026-05-06
-> **분석 대상**: `nimg_v3` (FoundationPose 기반 6DoF 자세 추정 시스템) v3.0.0
-> **작성자**: FurSys AI Team
+# nimg_v3 코드 종합 분석
 
 ---
 
