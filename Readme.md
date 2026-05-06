@@ -1,4 +1,4 @@
-Project Name: SL Corporation
+Project Name: SL Corporation (old)
 - Affiliated/Affiliated Company: SL Corporation / Magenta Robotics
 - Project Period: June 2025 - September 2025 (approximately 3 months) (Practical application expected in 26 years)
 - Key Roles
