@@ -1,8 +1,4 @@
-# LSD Interface 코드 분석 문서
-
-> **프로젝트**: JRT U81 LDS (Laser Distance Sensor) ROS2 제어 시스템
-> **작성일**: 2026-05-06
-> **분석 대상**: `lsd_interface/` 폴더 전체 코드
+# LSD Interface 코드 분석
 
 ---
 
