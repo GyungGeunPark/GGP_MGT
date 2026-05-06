@@ -16,6 +16,8 @@ find_package(OpenCV REQUIRED COMPONENTS core imgproc highgui cudaimgproc cudaari
 find_package(pcl_conversions REQUIRED)
 find_package(pcl_ros REQUIRED)
 find_package(pcl_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(livox_ros2_driver REQUIRED)
 
 # GStreamer 찾기
 find_package(PkgConfig REQUIRED)
@@ -50,6 +52,7 @@ ament_target_dependencies(camera_node
   cv_bridge
   image_transport
   OpenCV
+  livox_ros2_driver
 )
 
 target_link_libraries(camera_node
@@ -70,17 +73,11 @@ add_executable(lidar_node src/lidar_node.cpp)
 ament_target_dependencies(lidar_node
   rclcpp
   sensor_msgs
-  pcl_conversions
-  pcl_ros
-  pcl_msgs
-  OpenCV
+  std_srvs
 )
 
 target_link_libraries(lidar_node
-  ${OpenCV_LIBS}
-  Spinnaker
-  GenApi_gcc9_v3_0
-  GCBase_gcc9_v3_0
+  stdc++fs
 )
 
 ############################################
@@ -108,3 +105,4 @@ install(DIRECTORY launch/
 )
 
 ament_package()
+

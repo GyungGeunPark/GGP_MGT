@@ -10,15 +10,18 @@ import PythonLibMightyZap_PC as MightyZap
 import asyncio
 
 # 시리얼 및 기본 세팅
-SERIAL_PORT = '/dev/ttyUSB0'
+SERIAL_PORT = '/dev/ttyACTUATOR'
 BAUD_RATE = 57600
 
 # 예: 카메라 이름별로 제어해야 할 액추에이터 ID 목록
-# Robot_Local 카메라는 액추에이터 ID=1, Gantry_Global1 카메라는 액추에이터 ID=2 라고 가정
+# Robot_Local 카메라는 액추에이터 ID=1, Gentri_Global1 카메라는 액추에이터 ID=2 라고 가정
 CAMERA_ACTUATOR_MAP = {
     'Robot_Local': [1],
-    'Gantry_Global1': [2],
-    'Gantry_Global2': [3]
+    'Gentri_Global1': [2],
+    'Gentri_Global2': [3],
+    'Gentri_Global3': [4],
+    'Gentri_Global4': [5],
+    'Robot_Spare': [9]
 }
 
 # 열림/닫힘 위치(각 액추에이터에 동일하다고 가정)
@@ -30,14 +33,14 @@ class CommandSubscriber(Node):
         super().__init__('actuator_controller')
 
         # 카메라별 현재 열림/닫힘 상태를 기록 (None은 아직 상태 모름)
-        # 예: {'Robot_Local': True, 'Gantry_Global1': False, ...}
+        # 예: {'Robot_Local': True, 'Gentri_Global1': False, ...}
         self.camera_states = {}
         # 카메라별 현재 이동 중인지 여부
-        # 예: {'Robot_Local': False, 'Gantry_Global1': True, ...}
+        # 예: {'Robot_Local': False, 'Gentri_Global1': True, ...}
         self.camera_moving = {}
 
         # perc/cover 토픽(String) 구독
-        # 예: "Robot_Local:open" 또는 "Gantry_Global1:close"
+        # 예: "Robot_Local:open" 또는 "Gentri_Global1:close"
         self.cam_cover_sub = self.create_subscription(
             String,
             'perc/cover',
@@ -63,7 +66,7 @@ class CommandSubscriber(Node):
     def cam_cover_cb(self, msg: String):
         """
         카메라 커버 명령 콜백 함수 (String)
-        예: "Robot_Local:open" or "Gantry_Global1:close"
+        예: "Robot_Local:open" or "Gentri_Global1:close"
         """
         raw_str = msg.data.strip()
         print("==========================================================")

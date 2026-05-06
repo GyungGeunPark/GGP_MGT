@@ -6,10 +6,10 @@ from launch_ros.actions import Node
 from launch.conditions import IfCondition
 
 def generate_launch_description():
-    # # 새로운 인수 선언
+    # 새로운 인수 선언
     # tcp_server_ip_arg = DeclareLaunchArgument(
     #     'tcp_server_ip',
-    #     default_value='127.0.1.10',
+    #     default_value='127.0.0.1',
     #     description='IP address of the TCP server'
     # )
     

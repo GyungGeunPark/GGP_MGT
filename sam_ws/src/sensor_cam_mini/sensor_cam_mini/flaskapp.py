@@ -250,7 +250,7 @@
 #     # 커맨드 라인 인자로 포트 받기
 #     port = 5000  # 웹 서버 기본 포트
 #     tcp_port = 9100  # TCP 서버 기본 포트
-    
+  
 #     if len(sys.argv) > 1:
 #         try:
 #             tcp_port = int(sys.argv[1])
