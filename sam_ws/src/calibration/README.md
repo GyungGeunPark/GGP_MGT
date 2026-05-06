@@ -1,10 +1,4 @@
-# Calibration 패키지 코드 분석 문서
-
-> **패키지 명**: `calibration`
-> **버전**: 0.1.0
-> **빌드 타입**: ROS2 `ament_python`
-> **목적**: Dual-board / Two-stage 방식의 카메라 + LiDAR 캘리브레이션 파이프라인
-> **대상 시스템**: 4+1 Gantry 유닛 (`Gantry_Global1~4` + `Robot_Local`)
+# Calibration 패키지 코드 분석
 
 ---
 
