@@ -1,0 +1,61 @@
+# nimg_v3 Default Configuration
+# FoundationPose 기반 6DoF 자세 추정 시스템
+
+# 카메라 설정 (RealSense D455)
+camera:
+  fx: 383.883
+  fy: 383.883
+  cx: 320.499
+  cy: 237.913
+  width: 640
+  height: 480
+  depth_scale: 0.001
+  depth_min: 0.1
+  depth_max: 10.0
+  fps: 30.0
+
+# 객체 탐지 설정 (YOLO)
+detection:
+  model_path: "models/yolo/class187_image85286_v12x_250epochs.pt"
+  conf_threshold: 0.5
+  iou_threshold: 0.45
+  max_detections: 100
+  img_size: 640
+  half_precision: true
+
+# 자세 추정 설정 (FoundationPose)
+pose_estimation:
+  model_dir: "models/foundationpose"
+  mode: "model_free"  # model_based 또는 model_free
+  mesh_path: null
+  neural_field_dir: "models/neural_fields/painting_object"
+  reference_images_dir: null
+  use_tensorrt: true
+  refine_iterations: 5
+  tracking_recovery_threshold: 0.3
+  max_lost_frames: 5
+
+# Kalman Filter 설정
+kalman_filter:
+  mode: "quaternion"  # euler 또는 quaternion
+  process_noise_pos: 0.01
+  process_noise_vel: 0.1
+  process_noise_orient: 0.1
+  process_noise_angular_vel: 1.0
+  measurement_noise_pos: 0.005
+  measurement_noise_orient: 0.5
+  adaptive_noise: true
+
+# 출력 설정
+output:
+  save_results: true
+  output_dir: "output"
+  output_format: "csv"
+  visualize: true
+  save_visualization: false
+  log_level: "INFO"
+  log_to_file: false
+
+# 시스템 설정
+device: "cuda:0"
+reference_frame_idx: 0

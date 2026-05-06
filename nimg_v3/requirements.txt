@@ -1,0 +1,36 @@
+# nimg_v3 Requirements
+# FoundationPose 기반 6DoF 자세 추정 시스템
+
+# Core
+numpy>=1.20.0
+scipy>=1.7.0
+opencv-python>=4.5.0
+filterpy>=1.4.5
+pyyaml>=5.4.0
+pandas>=1.3.0
+
+# Deep Learning (PyTorch)
+torch>=1.10.0
+torchvision>=0.11.0
+
+# YOLO Detection
+ultralytics>=8.0.0
+
+# 3D Processing
+trimesh>=3.9.0
+open3d>=0.13.0
+scikit-image>=0.18.0
+
+# GUI
+PyQt5>=5.15.0
+
+# RealSense (system package recommended: apt install python3-pyrealsense2)
+pyrealsense2>=2.50.0
+
+# Optional: FoundationPose (별도 설치 필요)
+# pip install git+https://github.com/NVlabs/nvdiffrast
+# 또는 Docker: wenbowen123/foundationpose
+
+# Development
+pytest>=6.0.0
+pytest-cov>=2.0.0
