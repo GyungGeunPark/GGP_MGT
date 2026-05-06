@@ -1,0 +1,3 @@
+[console_scripts]
+nimg_v3_measure = scripts.run_measurement:main
+nimg_v3_train = scripts.train_neural_field:main
