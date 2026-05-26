@@ -1,0 +1,48 @@
+name: lds-v4-ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # ── 소프트웨어 테스트: 패킷 계약 + 브리지 E2E + 동시성 ──
+  software-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Python deps
+        run: pip install fastapi "uvicorn[standard]" websockets
+      - name: Run test suite
+        run: bash run_tests.sh
+
+  # ── 펌웨어 컴파일: ESP32-C3 (BLE 기본 + WiFi 기본 양쪽) ──
+  firmware-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install arduino-cli
+        uses: arduino/setup-arduino-cli@v2
+      - name: Install ESP32 core + NimBLE
+        run: |
+          arduino-cli config init --overwrite
+          arduino-cli config add board_manager.additional_urls \
+            https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
+          arduino-cli lib install "NimBLE-Arduino"
+      - name: Compile firmware (BLE default)
+        run: |
+          mkdir -p build/option_b_firmware_v4
+          cp circuit_diagram_v3/option_b_firmware_v4.ino build/option_b_firmware_v4/
+          arduino-cli compile --fqbn "esp32:esp32:esp32c3:CDCOnBoot=cdc" build/option_b_firmware_v4
+      - name: Compile firmware (WiFi default)
+        run: |
+          mkdir -p build/option_b_firmware_v4_wifi
+          sed 's/#define DEFAULT_COMM_MODE   MODE_BLE/#define DEFAULT_COMM_MODE   MODE_WIFI/' \
+            circuit_diagram_v3/option_b_firmware_v4.ino \
+            > build/option_b_firmware_v4_wifi/option_b_firmware_v4_wifi.ino
+          arduino-cli compile --fqbn "esp32:esp32:esp32c3:CDCOnBoot=cdc" build/option_b_firmware_v4_wifi

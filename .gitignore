@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Build artifacts
+build/
+*.elf
+*.bin
+*.hex
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# Claude Code local tooling config (push 금지)
+.claude/
